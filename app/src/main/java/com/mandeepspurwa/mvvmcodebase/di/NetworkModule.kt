@@ -1,5 +1,7 @@
 package com.mandeepspurwa.mvvmcodebase.di
 
+import com.mandeepspurwa.mvvmcodebase.BuildConfig
+import com.mandeepspurwa.mvvmcodebase.data.remote.NetworkService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -7,6 +9,8 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -61,12 +65,15 @@ object NetworkModule {
 
     }
 
-    /*@Singleton
+    @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient).build()*/
+            .client(okHttpClient).build()
 
-
+    @Provides
+    @Singleton
+    fun provideNetworkService(retrofit: Retrofit): NetworkService =
+        retrofit.create(NetworkService::class.java)
 }
