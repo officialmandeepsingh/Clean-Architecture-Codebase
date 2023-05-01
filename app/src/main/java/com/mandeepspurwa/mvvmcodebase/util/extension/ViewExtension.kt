@@ -48,7 +48,7 @@ fun View.gone() {
 
 class ViewHolder<K : ViewBinding>(val binding: K) : RecyclerView.ViewHolder(binding.root)
 
-fun <T, K : ViewBinding> RecyclerView.newbindData(
+fun <T, K : ViewBinding> RecyclerView.bindRecyclerAdapter(
     itemBinding: K,
     data: List<T>,
     bindFun: (viewBinding: K, listType: T) -> Unit,

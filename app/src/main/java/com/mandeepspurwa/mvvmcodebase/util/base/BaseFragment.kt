@@ -15,7 +15,7 @@ import androidx.viewbinding.ViewBinding
  * Date: Tue 25 Apr, 2023
  *
  **/
-class BaseFragment<VB : ViewBinding>(private val bindingInflater: (LayoutInflater) -> VB) :
+abstract class BaseFragment<VB : ViewBinding>(private val bindingInflater: (LayoutInflater) -> VB) :
     Fragment() {
     open val TAG: String? = this::class.simpleName
 

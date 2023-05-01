@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mandeepspurwa.mvvmcodebase.databinding.ActivityMainBinding
 import com.mandeepspurwa.mvvmcodebase.databinding.ItemTextBinding
-import com.mandeepspurwa.mvvmcodebase.util.extension.newbindData
+import com.mandeepspurwa.mvvmcodebase.util.extension.bindRecyclerAdapter
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val itemBinding = ItemTextBinding.inflate(layoutInflater)
-        binding.rcyName.newbindData<String, ItemTextBinding>(
+        binding.rcyName.bindRecyclerAdapter<String, ItemTextBinding>(
             itemBinding,
-            data = listOf("item1", "item2", "item3", "item4", "item4",  "item14")
+            data = listOf("item1", "item2", "item3", "item4", "item4", "item14")
         ) { binding, item ->
             binding.textView.text = item
         }
