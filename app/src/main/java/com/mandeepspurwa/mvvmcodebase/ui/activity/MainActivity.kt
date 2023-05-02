@@ -1,4 +1,4 @@
-package com.mandeepspurwa.mvvmcodebase
+package com.mandeepspurwa.mvvmcodebase.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
