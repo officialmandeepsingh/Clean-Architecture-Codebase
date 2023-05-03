@@ -1,6 +1,12 @@
 package com.mandeepspurwa.mvvmcodebase.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.mandeepspurwa.mvvmcodebase.data.models.Movie
+import com.mandeepspurwa.mvvmcodebase.data.pagging.PopularMoviePagingSource
 import com.mandeepspurwa.mvvmcodebase.data.remote.NetworkService
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 /**
@@ -12,4 +18,12 @@ import javax.inject.Inject
  *
  **/
 class RemoteRepository @Inject constructor(val networkService: NetworkService) {
+    private val config = PagingConfig(20, 4, true, 20)
+
+    fun PopularMovie(): Flow<PagingData<Movie>>{
+        return Pager(config){
+            PopularMoviePagingSource(networkService)
+        }.flow
+    }
+
 }

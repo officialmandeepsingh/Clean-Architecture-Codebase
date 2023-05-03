@@ -22,6 +22,7 @@ android {
 
 
         buildConfigField( "String", "BASE_URL" ,  gradleLocalProperties(rootDir).getProperty("BASE_URL"))
+        buildConfigField( "String", "API_KEY" ,  gradleLocalProperties(rootDir).getProperty("API_KEY"))
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
